@@ -11,6 +11,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ScoreKeeper : NSObject
 
+@property (nonatomic, readwrite) NSInteger rights;
+@property (nonatomic, readwrite) NSInteger wrongs;
+
+- (void)getScore;
+
 @end
 
 NS_ASSUME_NONNULL_END

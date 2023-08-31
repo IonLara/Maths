@@ -9,4 +9,10 @@
 
 @implementation ScoreKeeper
 
+- (void)getScore
+{
+    NSInteger percentage = (100 * _rights)/(_rights + _wrongs);
+    NSLog(@"Score: %ld right, %ld wrong ---- %ld%%",_rights, _wrongs, (long)percentage);
+}
+
 @end

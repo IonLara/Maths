@@ -8,11 +8,13 @@
 #import <Foundation/Foundation.h>
 #import "AdditionQuestion.h"
 #import "InputHandler.h"
+#import "ScoreKeeper.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Welcome to Maths!");
+        ScoreKeeper *score = [[ScoreKeeper alloc] init];
         while (true)
         {
             //Get question:
@@ -27,7 +29,7 @@ int main(int argc, const char * argv[]) {
             NSString *parsedString = [InputHandler receiveInput];
 //
             //Check answer
-            if([parsedString isEqualToString: @"Quit"])
+            if([parsedString isEqualToString: @"quit"])
             {
                 break;
             } else
@@ -36,12 +38,14 @@ int main(int argc, const char * argv[]) {
                 if (num == addQuest.answer)
                 {
                     NSLog(@"Correct!");
+                    score.rights++;
                 } else
                 {
                     NSLog(@"Wrong!");
+                    score.wrongs++;
                 }
             }
-            
+            [score getScore];
         }
     }
     return 0;
