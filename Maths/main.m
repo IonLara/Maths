@@ -6,6 +6,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AdditionQuestion.h"
+#import "InputHandler.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -14,14 +16,31 @@ int main(int argc, const char * argv[]) {
         while (true)
         {
             //Get question:
-            
+            AdditionQuestion *addQuest = [[AdditionQuestion alloc] init];
+            NSLog(addQuest.question);
             
             //Get user Input
-            char inputChar[255];
-            fgets(inputChar, 255, stdin);
-            NSString *inputString = [NSString stringWithUTF8String:inputChar];
-            NSCharacterSet *newlineCharacterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
-            NSString *parsedString = [inputString stringByTrimmingCharactersInSet:newlineCharacterSet];
+//            char inputChar[255];
+//            fgets(inputChar, 255, stdin);
+//            NSString *inputString = [NSString stringWithUTF8String:inputChar];
+//            NSCharacterSet *newlineCharacterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+            NSString *parsedString = [InputHandler receiveInput];
+//
+            //Check answer
+            if([parsedString isEqualToString: @"Quit"])
+            {
+                break;
+            } else
+            {
+                NSInteger num = [parsedString integerValue];
+                if (num == addQuest.answer)
+                {
+                    NSLog(@"Correct!");
+                } else
+                {
+                    NSLog(@"Wrong!");
+                }
+            }
             
         }
     }

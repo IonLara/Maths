@@ -1,5 +1,5 @@
 //
-//  AdditionQuestion.h
+//  ScoreKeeper.h
 //  Maths
 //
 //  Created by Ion Sebastian Rodriguez Lara on 31/08/23.
@@ -9,10 +9,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AdditionQuestion : NSObject
-
-@property(nonatomic, readwrite) NSString* question;
-@property(nonatomic, readwrite) NSInteger answer;
+@interface ScoreKeeper : NSObject
 
 @end
 
