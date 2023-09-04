@@ -6,19 +6,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AdditionQuestion.h"
+#import "Question.h"
 #import "InputHandler.h"
 #import "ScoreKeeper.h"
+#import "QuestionManager.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Welcome to Maths!");
         ScoreKeeper *score = [[ScoreKeeper alloc] init];
+        QuestionManager *questionManager = [[QuestionManager alloc] init];
         while (true)
         {
             //Get question:
-            AdditionQuestion *addQuest = [[AdditionQuestion alloc] init];
+            Question *addQuest = [[Question alloc] init];
+            [questionManager.questions addObject:addQuest];
             NSLog(addQuest.question);
             
             //Get user Input
@@ -35,6 +38,7 @@ int main(int argc, const char * argv[]) {
             } else
             {
                 NSInteger num = [parsedString integerValue];
+                
                 if (num == addQuest.answer)
                 {
                     NSLog(@"Correct!");
@@ -46,6 +50,7 @@ int main(int argc, const char * argv[]) {
                 }
             }
             [score getScore];
+            NSLog([questionManager timeOutput]);
         }
     }
     return 0;
