@@ -26,13 +26,15 @@
     {
         _startTime = [NSDate date];
         
-        NSInteger num1 = arc4random_uniform(91) + 10;
-        NSInteger num2 = arc4random_uniform(91) + 10;
+        _leftValue = arc4random_uniform(91) + 10;
+        _rightValue = arc4random_uniform(91) + 10;
         
-        _question = [NSString stringWithFormat:@"%ld + %ld = ?",(long)num1, (long)num2];
-        _answer = (num1 + num2);
+        _question = [NSString stringWithFormat:@"%ld + %ld = ?",(long)_leftValue, (long)_rightValue];
+        _answer = (_leftValue + _rightValue);
     }
     return self;
 }
+
+- (void) generateQuestion {}
 
 @end

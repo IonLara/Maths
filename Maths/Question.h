@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readwrite) NSDate *startTime;
 @property(nonatomic, readwrite) NSDate *endTime;
 
+@property(nonatomic, readwrite) NSInteger leftValue;
+@property(nonatomic, readwrite) NSInteger rightValue;
+
 - (NSTimeInterval) answerTime;
 
 
