@@ -10,27 +10,25 @@
 #import "InputHandler.h"
 #import "ScoreKeeper.h"
 #import "QuestionManager.h"
+#import "QuestionFactory.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
+
         NSLog(@"Welcome to Maths!");
         ScoreKeeper *score = [[ScoreKeeper alloc] init];
         QuestionManager *questionManager = [[QuestionManager alloc] init];
+        QuestionFactory *factory = [[QuestionFactory alloc] init];
         while (true)
         {
             //Get question:
-            Question *addQuest = [[Question alloc] init];
-            [questionManager.questions addObject:addQuest];
-            NSLog(addQuest.question);
+            Question *quest = [factory generateQuestion];
+            [questionManager.questions addObject:quest];
+            NSLog(quest.question);
             
             //Get user Input
-//            char inputChar[255];
-//            fgets(inputChar, 255, stdin);
-//            NSString *inputString = [NSString stringWithUTF8String:inputChar];
-//            NSCharacterSet *newlineCharacterSet = [NSCharacterSet whitespaceAndNewlineCharacterSet];
             NSString *parsedString = [InputHandler receiveInput];
-//
+
             //Check answer
             if([parsedString isEqualToString: @"quit"])
             {
@@ -39,7 +37,7 @@ int main(int argc, const char * argv[]) {
             {
                 NSInteger num = [parsedString integerValue];
                 
-                if (num == addQuest.answer)
+                if (num == quest.answer)
                 {
                     NSLog(@"Correct!");
                     score.rights++;
